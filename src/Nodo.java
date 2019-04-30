@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Nodo extends AbstractComposite {
 
@@ -9,11 +8,11 @@ public class Nodo extends AbstractComposite {
         this.rectangulos = rectangulos;
     }
 
-    // TODO insertar
+
     public void insertar(Rectangle r){
         int aux;
         if (rectangulos.get(0).getHijo().esHoja()){
-            int mayor = this.M;
+            int mayor = M;
             int k = 0;
             for (int i=0; i<rectangulos.size(); i++){
                 int sizeI = rectangulos.get(i).getHijo().getRectangulos().size();
@@ -26,7 +25,7 @@ public class Nodo extends AbstractComposite {
         }
         else{
             int indiceMejor = 0;
-            int menorArea = 1000000;
+            int menorArea = Integer.MAX_VALUE;
             for(int i = 0; i<rectangulos.size(); i++){
                 aux = rectangulos.get(i).growRectangle(r);
                 if (aux < menorArea){
@@ -56,11 +55,12 @@ public class Nodo extends AbstractComposite {
     }
 
     @Override
-    public void linearSplit() {
-
+    public IComposite linearSplit() {
+        return this;
     }
 
     //Devuelve una lista con los datos que INTERSECTAN al rectangulo buscado.
+    @Override
     public ArrayList<Rectangle> buscar(Rectangle r){
 
         ArrayList<Rectangle> founded = new ArrayList<>();
@@ -68,6 +68,7 @@ public class Nodo extends AbstractComposite {
             Rectangle ri = rectangulos.get(i);
             if(ri.intersect(r)){
                 IComposite compositeHijo = ri.getHijo();
+                System.out.println(compositeHijo);
                 founded.addAll(compositeHijo.buscar(r));
             }
         }

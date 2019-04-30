@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 
 public class Hoja extends AbstractComposite {
-    public Hoja() {
+    public Hoja(ArrayList<Rectangle> rectangulos) {
         super();
+        this.rectangulos = rectangulos;
     }
 
     @Override
@@ -116,6 +117,8 @@ public class Hoja extends AbstractComposite {
             // OCUPAMOS dimensionybajo y dimensionyalto
             // ocupamos indiceYBajo e indiceYAlto
         }
+
+        return this;
     }
 
     @Override

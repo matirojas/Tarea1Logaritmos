@@ -8,9 +8,6 @@
 (x,y)         (x+w,y)
 */
 
-
-import org.w3c.dom.css.Rect;
-
 public class Rectangle{
     private int x;
     private int y;
@@ -77,10 +74,6 @@ public class Rectangle{
     }
 
     public int growRectangle(Rectangle r){
-        Point a = new Point(r.getX(),r.getY()+r.getHeight());
-        Point b = new Point(r.getX()+r.getWidth(),r.getY()+r.getHeight());
-        Point c = new Point(r.getX(),r.getY());
-        Point d = new Point(r.getX()+r.getWidth(),r.getY());
         int derecha;
         int izquierda;
         int abajo;
@@ -113,24 +106,23 @@ public class Rectangle{
         else{
             abajo = this.getY();
         }
-
         int ancho = derecha-izquierda;
         int alto = arriba-abajo;
+
+
         int nuevaArea = ancho * alto;
+        System.out.println(nuevaArea);
 
         return nuevaArea - this.area();
     }
 
     /*
     public static void main(String[] args) {
-        Rectangle r1 = new Rectangle(10,20,5, 5);
-        Rectangle r2 = new Rectangle(0,0, 10,20);
-        if (r2.intersect(r1)){
-            System.out.println("Salio True");
-        }
-        else{
-            System.out.println("Salio False");
-        }
+        Rectangle r1 = new Rectangle(0,0,30, 30);
+        Rectangle r2 = new Rectangle(15,15, 1,1);
+
+        System.out.println(r1.growRectangle(r2));
     }
     */
+
 }
